@@ -57,7 +57,7 @@ const Categories = () => {
                 <SwiperSlide>
                     <img src={slider5} alt="" />
                     <div>
-                        <h3 className="text-3xl text-blue-500 w-1/2 mx-auto font-bold -mt-16">Salads</h3>
+                        <h3 className="text-3xl text-white w-1/2 mx-auto font-bold -mt-16">Salads</h3>
                     </div>
                 </SwiperSlide>
             </Swiper>
