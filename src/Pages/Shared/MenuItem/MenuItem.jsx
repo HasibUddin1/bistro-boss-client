@@ -5,7 +5,7 @@ const MenuItem = ({item}) => {
     const {name, image, recipe, price} = item
 
     return (
-        <div className="flex gap-5">
+        <div className="flex justify-between gap-5">
             <div>
                 <img className="w-[120px] rounded-e-full rounded-b-full" src={image} alt="" />
             </div>
