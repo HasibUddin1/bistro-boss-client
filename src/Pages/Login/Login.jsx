@@ -5,6 +5,7 @@ import './Login.css'
 import loginImage from '../../assets/others/authentication2.png'
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
@@ -29,6 +30,15 @@ const Login = () => {
         .then(result => {
             const loggedUser = result.user
             console.log(loggedUser)
+            Swal.fire({
+                title: 'User has been successfully logged in',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
         })
         .catch(error => {
             console.log(error)
