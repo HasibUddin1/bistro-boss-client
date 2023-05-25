@@ -1,12 +1,26 @@
 import { Link } from 'react-router-dom';
 import signUpImage from '../../assets/others/authentication2.png'
 import { useForm } from 'react-hook-form';
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const SignUp = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const {createUser} = useContext(AuthContext)
+
+
     const onSubmit = data => {
-        console.log(data)
+        // console.log(data)
+
+        createUser(data.email, data.password)
+        .then(result => {
+            const registeredUser = result.user
+            console.log(registeredUser)
+        })
+        .catch(error => {
+            console.log(error)
+        })
     };
 
     return (
@@ -37,10 +51,16 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" {...register("password", { required: true, minLength: 8})} name="password" placeholder="password" className="input input-bordered" />
-                                {errors.password && <span className='text-red-500 font-semibold'>Password is required</span>}
+                                <input type="password" {...register("password", {
+                                    required: true,
+                                    minLength: 8,
+                                    pattern: /(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]/
+                                })} name="password" placeholder="password" className="input input-bordered" />
+                                {errors.password?.type === 'required' && <p role="alert" className='text-red-600 font-semibold'>Password is required</p>}
+                                {errors.password?.type === 'minLength' && <p role="alert" className='text-red-600 font-semibold'>Password must be 8 characters long</p>}
+                                {errors.password?.type === 'pattern' && <p role="alert" className='text-red-600 font-semibold'>Password must have at least one uppercase letter, one lowercase letter and one digit</p>}
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    
                                 </label>
                             </div>
                             <div className="form-control mt-6">

@@ -80,7 +80,7 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <input disabled={disabled} className="bg-[#D1A054] bg-opacity-70 px-6 py-2 rounded-xl text-white hover:bg-yellow-600 ease-out duration-200 cursor-pointer" type="submit" value="Login" />
+                                <input disabled={disabled} className={disabled ? 'bg-[#D1A054] bg-opacity-70 px-6 py-2 rounded-xl text-white' : 'bg-[#D1A054] px-6 py-2 rounded-xl text-white hover:bg-yellow-600 ease-out duration-200 cursor-pointer'} type="submit" value="Login" />
                             </div>
                         </form>
                         <p className='text-center text-[#D1A054]'>New Here? <Link className='font-bold' to='/signUp'>Please Sign Up</Link></p>
