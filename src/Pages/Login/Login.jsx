@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 
+import './Login.css'
+import loginImage from '../../assets/others/authentication2.png'
+
 const Login = () => {
 
     const captchaRef = useRef(null)
@@ -23,51 +26,53 @@ const Login = () => {
 
     const handleValidateCaptcha = () => {
         const userCaptchaValue = captchaRef.current.value
-        if(validateCaptcha(userCaptchaValue)){
+        if (validateCaptcha(userCaptchaValue)) {
             setDisabled(false)
         }
-        else{
+        else {
             setDisabled(true)
         }
     }
 
     return (
-        <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row">
-                <div className="text-center w-1/2 lg:text-left">
-                    <h1 className="text-5xl font-bold">Login now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                </div>
-                <div className="card w-1/2 shadow-2xl bg-base-100">
-                    <form onSubmit={handleSubmit} className="card-body">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <LoadCanvasTemplate />
-                            </label>
-                            <input type="text" ref={captchaRef} name="captcha" placeholder="Type the text above" className="input input-bordered" />
-                            <label className="label">
-                                <p onClick={handleValidateCaptcha} className="btn btn-outline btn-xs">Validate</p>
-                            </label>
-                        </div>
-                        <div className="form-control mt-6">
-                            <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
-                        </div>
-                    </form>
+        <div className='login-page-background h-screen'>
+            <div className="hero py-20 px-20">
+                <div className="drop-shadow-2xl bg-base-100 flex rounded-xl rounded-s-xl login-page-background w-9/12 mx-auto">
+                    <div className='text-center w-1/2 h-1/2 my-auto'>
+                        <img className='rounded-xl' src={loginImage} alt="" />
+                    </div>
+                    <div className='w-1/2 py-5'>
+                        <h2 className='text-center text-3xl font-bold'>Login</h2>
+                        <form onSubmit={handleSubmit} className="card-body">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="email" name="email" placeholder="email" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input type="password" name="password" placeholder="password" className="input input-bordered" />
+                                <label className="label">
+                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <LoadCanvasTemplate />
+                                </label>
+                                <input type="text" ref={captchaRef} name="captcha" placeholder="Type the text above" className="input input-bordered" />
+                                <label className="label">
+                                    <p onClick={handleValidateCaptcha} className="btn btn-outline btn-xs">Validate</p>
+                                </label>
+                            </div>
+                            <div className="form-control mt-6">
+                                <input disabled={disabled} className="bg-[#D1A054] bg-opacity-70 px-6 py-2 rounded-xl text-white hover:bg-yellow-600 ease-out duration-200 cursor-pointer" type="submit" value="Login" />
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

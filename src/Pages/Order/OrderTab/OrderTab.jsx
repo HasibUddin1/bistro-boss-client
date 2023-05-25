@@ -14,12 +14,16 @@ const OrderTab = ({ items }) => {
             return '<span class="' + className + '">' + (index + 1) + "</span>";
         },
     };
+
     return (
         <div>
             <Swiper
                 pagination={pagination}
                 modules={[Pagination]}
                 className="mySwiper"
+                onSlideChange={(swiper) => {
+                    console.log(swiper.realIndex)
+                }}
             >
                 <SwiperSlide>
                     <div className="grid md:grid-cols-3 gap-10 mt-10 mb-10">
