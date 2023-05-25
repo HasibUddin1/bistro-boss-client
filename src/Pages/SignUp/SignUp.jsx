@@ -1,26 +1,46 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import signUpImage from '../../assets/others/authentication2.png'
 import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const {createUser} = useContext(AuthContext)
+    const { register, handleSubmit,reset, formState: { errors } } = useForm();
+    const { createUser, updateUserInformation } = useContext(AuthContext)
+    const navigate = useNavigate()
 
 
     const onSubmit = data => {
         // console.log(data)
 
         createUser(data.email, data.password)
-        .then(result => {
-            const registeredUser = result.user
-            console.log(registeredUser)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(result => {
+                const registeredUser = result.user
+                console.log(registeredUser)
+                updateUserInformation(registeredUser, data.name, data.photoURL)
+                    .then(() => {
+                        reset();
+                        Swal.fire({
+                            title: 'User Profile has been updated',
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                            
+                        })
+                        navigate('/')
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            })
+            .catch(error => {
+                console.log(error)
+            })
     };
 
     return (
@@ -42,6 +62,13 @@ const SignUp = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
+                                    <span className="label-text">Photo URL</span>
+                                </label>
+                                <input type="text" {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
+                                {errors.photoURL && <span className='text-red-500 font-semibold'>Photo URL is required</span>}
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
@@ -60,7 +87,7 @@ const SignUp = () => {
                                 {errors.password?.type === 'minLength' && <p role="alert" className='text-red-600 font-semibold'>Password must be 8 characters long</p>}
                                 {errors.password?.type === 'pattern' && <p role="alert" className='text-red-600 font-semibold'>Password must have at least one uppercase letter, one lowercase letter and one digit</p>}
                                 <label className="label">
-                                    
+
                                 </label>
                             </div>
                             <div className="form-control mt-6">
