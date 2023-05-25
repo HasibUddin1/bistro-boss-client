@@ -4,7 +4,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import './Login.css'
 import loginImage from '../../assets/others/authentication2.png'
 import { AuthContext } from '../../Providers/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Login = () => {
@@ -14,6 +14,11 @@ const Login = () => {
     const [disabled, setDisabled] = useState(true)
 
     const {signIn} = useContext(AuthContext)
+
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const from = location.state?.from?.pathname || '/'
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -39,6 +44,7 @@ const Login = () => {
                   popup: 'animate__animated animate__fadeOutUp'
                 }
               })
+              navigate(from, {replace: true})
         })
         .catch(error => {
             console.log(error)

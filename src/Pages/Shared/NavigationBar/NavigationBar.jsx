@@ -21,6 +21,7 @@ const NavigationBar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/ourMenu'>Our Menu</Link></li>
         <li><Link to='/ourShop/salad'>Our Shop</Link></li>
+        <li><Link to='/secret'>Secret</Link></li>
         {user ?
             <><button onClick={handleLogOut} className="btn btn-ghost">LogOut</button></> :
             <li><Link to='/login'>Login</Link></li>
