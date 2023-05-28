@@ -25,7 +25,7 @@ const NavigationBar = () => {
         <li><Link to='/secret'>Secret</Link></li>
         <li><Link>
             <div className="indicator">
-                <span className="indicator-item badge badge-secondary">+1</span>
+                <span className="indicator-item badge badge-secondary">+0</span>
                 <button className="btn bg-transparent border-none text-xl"><FaShoppingCart></FaShoppingCart></button>
             </div>
         </Link></li>

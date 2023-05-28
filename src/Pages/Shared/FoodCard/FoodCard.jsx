@@ -1,35 +1,44 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const FoodCard = ({ item }) => {
 
-    const { name, image, recipe, price } = item
+    const { name, image, recipe, price, _id } = item
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
 
     const handleAddToCart = item => {
         console.log(item)
 
-        if (user) {
+
+        if (user && user.email) {
+            const orderItem = {
+                itemId: _id,
+                name,
+                image,
+                price,
+                email: user.email
+            }
             fetch('http://localhost:5000/cart', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify(item)
+                body: JSON.stringify(orderItem)
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     if (data.insertedId) {
                         Swal.fire({
                             title: 'Success',
-                            text: 'Do you want to continue',
+                            text: 'Your Item has been added to the cart',
                             icon: 'success',
-                            confirmButtonText: 'Cool'
+                            confirmButtonText: 'Ok'
                         })
                     }
                 })
@@ -45,7 +54,7 @@ const FoodCard = ({ item }) => {
                 confirmButtonText: 'Login'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    navigate('/login')
+                    navigate('/login', { state: { from: location } })
                 }
             })
         }
