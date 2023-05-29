@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 const SignUp = () => {
 
-    const { register, handleSubmit,reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserInformation } = useContext(AuthContext)
     const navigate = useNavigate()
 
@@ -21,18 +21,33 @@ const SignUp = () => {
                 console.log(registeredUser)
                 updateUserInformation(registeredUser, data.name, data.photoURL)
                     .then(() => {
-                        reset();
-                        Swal.fire({
-                            title: 'User Profile has been updated',
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
+
+                        const createdUser = { name: data.name, email: data.email }
+
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json',
                             },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            }
-                            
+                            body: JSON.stringify(createdUser)
                         })
-                        navigate('/')
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        title: 'User Profile has been created successfully',
+                                        showClass: {
+                                            popup: 'animate__animated animate__fadeInDown'
+                                        },
+                                        hideClass: {
+                                            popup: 'animate__animated animate__fadeOutUp'
+                                        }
+
+                                    })
+                                    navigate('/')
+                                }
+                            })
                     })
                     .catch(error => {
                         console.log(error)

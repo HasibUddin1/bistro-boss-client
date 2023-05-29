@@ -40,53 +40,55 @@ const MyCart = () => {
     }
 
     return (
-        <div>
+        <div className="w-full p-52 bg-slate-200">
             <Helmet>
                 <title>Bistro Boss | My Cart</title>
             </Helmet>
-            <div className="flex gap-10 font-semibold mb-5">
-                <h3 className="text-3xl">Total Orders: {cart.length}</h3>
-                <h3 className="text-3xl">Total Price: ${parseInt(total).toFixed(2)}</h3>
-                <button className="btn btn-warning btn-sm">Pay</button>
-            </div>
-            <div className="overflow-x-auto w-full">
-                <table className="table w-full">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Item Image</th>
-                            <th>Item Name</th>
-                            <th>Price</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            cart.map((item, index) => <tr
-                                key={item._id}
-                            >
-                                <td>
-                                    {index + 1}
-                                </td>
-                                <td>
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src={item.image} alt="Avatar Tailwind CSS Component" />
+            <div className="bg-white p-10 rounded-xl">
+                <div className="flex gap-10 justify-evenly font-semibold mb-5">
+                    <h3 className="text-3xl">Total Orders: {cart.length}</h3>
+                    <h3 className="text-3xl">Total Price: ${parseInt(total).toFixed(2)}</h3>
+                    <button className="btn btn-warning btn-sm">Pay</button>
+                </div>
+                <div className="overflow-x-auto w-full">
+                    <table className="table w-full">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Item Image</th>
+                                <th>Item Name</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                cart.map((item, index) => <tr
+                                    key={item._id}
+                                >
+                                    <td>
+                                        {index + 1}
+                                    </td>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    {item.name}
-                                </td>
-                                <td className="text-end">${item.price}</td>
-                                <th>
-                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
-                                </th>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
+                                    </td>
+                                    <td>
+                                        {item.name}
+                                    </td>
+                                    <td>${item.price}</td>
+                                    <th>
+                                        <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                    </th>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
