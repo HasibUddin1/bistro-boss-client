@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { FaShoppingCart, FaWallet, FaHome, FaCalendar } from 'react-icons/fa';
 import { TbStarsFilled } from "react-icons/tb";
 import { BsFillCalendarCheckFill } from "react-icons/bs";
@@ -15,19 +15,19 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                <ul className="menu p-4 w-80 bg-[#D1A054] text-base-content">
                     {/* <!-- Sidebar content here --> */}
-                    <li><Link to='/userHome'><FaHome></FaHome> User Home</Link></li>
-                    <li><Link to='/reservation'><FaCalendar></FaCalendar> Reservation</Link></li>
-                    <li><Link to='/paymentHistory'><FaWallet></FaWallet> Payment History</Link></li>
-                    <li><Link to='/myCart'><FaShoppingCart></FaShoppingCart> My Cart</Link></li>
-                    <li><Link to='/addReview'><TbStarsFilled></TbStarsFilled> Add Review</Link></li>
-                    <li><Link to='/myBooking'><BsFillCalendarCheckFill></BsFillCalendarCheckFill> My Booking</Link></li>
+                    <li><NavLink to='/dashboard/userHome'><FaHome></FaHome> User Home</NavLink></li>
+                    <li><NavLink to='/dashboard/reservation'><FaCalendar></FaCalendar> Reservation</NavLink></li>
+                    <li><NavLink to='/dashboard/paymentHistory'><FaWallet></FaWallet> Payment History</NavLink></li>
+                    <li><NavLink to='/dashboard/myCart'><FaShoppingCart></FaShoppingCart> My Cart</NavLink></li>
+                    <li><NavLink to='/dashboard/addReview'><TbStarsFilled></TbStarsFilled> Add Review</NavLink></li>
+                    <li><NavLink to='/dashboard/myBooking'><BsFillCalendarCheckFill></BsFillCalendarCheckFill> My Booking</NavLink></li>
                     <hr />
-                    <li><Link>Home</Link></li>
-                    <li><Link>Menu</Link></li>
-                    <li><Link>Shop</Link></li>
-                    <li><Link>Contact</Link></li>
+                    <li><NavLink to='/'>Home</NavLink></li>
+                    <li><NavLink to='/ourMenu'>Menu</NavLink></li>
+                    <li><NavLink to='/shop'>Shop</NavLink></li>
+                    <li><NavLink to='/contact'>Contact</NavLink></li>
                 </ul>
 
             </div>

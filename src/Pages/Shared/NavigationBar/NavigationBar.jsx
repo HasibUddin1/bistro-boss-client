@@ -27,7 +27,7 @@ const NavigationBar = () => {
         <li><Link to='/ourMenu'>Our Menu</Link></li>
         <li><Link to='/ourShop/salad'>Our Shop</Link></li>
         <li><Link to='/secret'>Secret</Link></li>
-        <li><Link to='/dashboard'>
+        <li><Link to='/dashboard/myCart'>
             <div className="indicator">
                 <span className="indicator-item badge badge-secondary">+{cart?.length}</span>
                 <button className="btn bg-transparent border-none text-xl"><FaShoppingCart></FaShoppingCart></button>
