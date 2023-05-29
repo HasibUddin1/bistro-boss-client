@@ -6,6 +6,7 @@ import loginImage from '../../assets/others/authentication2.png'
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
 const Login = () => {
 
@@ -101,6 +102,7 @@ const Login = () => {
                             </div>
                         </form>
                         <p className='text-center text-[#D1A054]'>New Here? <Link className='font-bold' to='/signUp'>Please Sign Up</Link></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
