@@ -8,6 +8,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
+
+
 const Login = () => {
 
     const captchaRef = useRef(null)
@@ -32,11 +34,17 @@ const Login = () => {
         const form = event.target
         const email = form.email.value
         const password = form.password.value
+        console.log(email, password)
 
         signIn(email, password)
         .then(result => {
             const loggedUser = result.user
             console.log(loggedUser)
+            // axios.post('http://localhost:5000/jwt', { email: loggedUser.email })
+            //     .then(data => {
+            //         // console.log(data.data.token)
+            //         localStorage.setItem('access-token', data.data.token)
+            //     })
             Swal.fire({
                 title: 'User has been successfully logged in',
                 showClass: {
@@ -98,7 +106,7 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <input disabled={disabled} className={disabled ? 'bg-[#D1A054] bg-opacity-70 px-6 py-2 rounded-xl text-white' : 'bg-[#D1A054] px-6 py-2 rounded-xl text-white hover:bg-yellow-600 ease-out duration-200 cursor-pointer'} type="submit" value="Login" />
+                                <input disabled={false} className={disabled ? 'bg-[#D1A054] bg-opacity-70 px-6 py-2 rounded-xl text-white' : 'bg-[#D1A054] px-6 py-2 rounded-xl text-white hover:bg-yellow-600 ease-out duration-200 cursor-pointer'} type="submit" value="Login" />
                             </div>
                         </form>
                         <p className='text-center text-[#D1A054]'>New Here? <Link className='font-bold' to='/signUp'>Please Sign Up</Link></p>

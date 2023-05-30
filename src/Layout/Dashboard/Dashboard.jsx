@@ -13,6 +13,7 @@ const Dashboard = () => {
 
     // const isAdmin = true;
     const [isAdmin] = useAdmin()
+    console.log(isAdmin)
 
     return (
         <div className="drawer drawer-mobile">
@@ -32,7 +33,7 @@ const Dashboard = () => {
                                 <li><NavLink to='/dashboard/adminHome'><FaHome></FaHome> Admin Home</NavLink></li>
                                 <li><NavLink to='/dashboard/addItems'><FaUtensils></FaUtensils> Add Items</NavLink></li>
                                 <li><NavLink to='/dashboard/manageItems'><TfiMenuAlt></TfiMenuAlt> Manage Items</NavLink></li>
-                                
+
                                 <li><NavLink to='/dashboard/manageBookings'><FaBook></FaBook> Manage Bookings</NavLink></li>
                                 <li><NavLink to='/dashboard/allUsers'><FaUsers></FaUsers> All Users</NavLink></li>
                             </> :
