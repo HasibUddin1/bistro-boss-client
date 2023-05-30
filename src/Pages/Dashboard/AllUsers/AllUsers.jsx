@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const AllUsers = () => {
 
-    const { data: users = [] } = useQuery(['users'], async () => {
+    const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch('http://localhost:5000/users')
         return res.json()
     })
@@ -14,8 +15,24 @@ const AllUsers = () => {
         console.log(user)
     }
 
-    const handleMakeAdmin = id => {
-        console.log(id)
+    const handleMakeAdmin = user => {
+        // console.log(user)
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    refetch()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is an admin now`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
 
     return (
@@ -48,7 +65,7 @@ const AllUsers = () => {
                                     <td>{
                                         user.role === 'admin' ?
                                             'admin' :
-                                            <button onClick={() => handleMakeAdmin(user._id)} className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaUserShield></FaUserShield> </button>
+                                            <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaUserShield></FaUserShield> </button>
                                     }</td>
                                     <td><button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button></td>
                                 </tr>)
