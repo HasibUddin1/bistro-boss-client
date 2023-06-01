@@ -1,17 +1,22 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm";
+import { Helmet } from "react-helmet-async";
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_Stripe_Key)
 
 const Reservation = () => {
     return (
-        <div>
-            <h1 className="text-4xl text-center">This is reservation component</h1>
-            <Elements stripe={stripePromise}>
-                <CheckoutForm></CheckoutForm>
-            </Elements>
+        <div className="w-full">
+            <Helmet>
+                <title>Bistro Boss | Reservation</title>
+            </Helmet>
+            <div className="w-1/4 mx-auto">
+                <Elements stripe={stripePromise}>
+                    <CheckoutForm></CheckoutForm>
+                </Elements>
+            </div>
         </div>
     );
 };
