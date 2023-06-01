@@ -99,7 +99,7 @@ const ManageItems = () => {
                                             key={item._id}
                                         >
                                             <td>
-                                                {index + 1}
+                                                {index + 7}
                                             </td>
                                             <td>
                                                 <div className="avatar">
@@ -144,7 +144,7 @@ const ManageItems = () => {
                                             key={item._id}
                                         >
                                             <td>
-                                                {index + 1}
+                                                {index + 13}
                                             </td>
                                             <td>
                                                 <div className="avatar">
@@ -189,7 +189,7 @@ const ManageItems = () => {
                                             key={item._id}
                                         >
                                             <td>
-                                                {index + 1}
+                                                {index + 19}
                                             </td>
                                             <td>
                                                 <div className="avatar">
@@ -234,7 +234,7 @@ const ManageItems = () => {
                                             key={item._id}
                                         >
                                             <td>
-                                                {index + 1}
+                                                {index + 25}
                                             </td>
                                             <td>
                                                 <div className="avatar">
@@ -279,7 +279,7 @@ const ManageItems = () => {
                                             key={item._id}
                                         >
                                             <td>
-                                                {index + 1}
+                                                {index + 31}
                                             </td>
                                             <td>
                                                 <div className="avatar">
@@ -324,7 +324,7 @@ const ManageItems = () => {
                                             key={item._id}
                                         >
                                             <td>
-                                                {index + 1}
+                                                {index + 37}
                                             </td>
                                             <td>
                                                 <div className="avatar">
@@ -369,7 +369,7 @@ const ManageItems = () => {
                                             key={item._id}
                                         >
                                             <td>
-                                                {index + 1}
+                                                {index + 43}
                                             </td>
                                             <td>
                                                 <div className="avatar">
@@ -414,7 +414,7 @@ const ManageItems = () => {
                                             key={item._id}
                                         >
                                             <td>
-                                                {index + 1}
+                                                {index + 49}
                                             </td>
                                             <td>
                                                 <div className="avatar">
@@ -459,7 +459,7 @@ const ManageItems = () => {
                                             key={item._id}
                                         >
                                             <td>
-                                                {index + 1}
+                                                {index + 55}
                                             </td>
                                             <td>
                                                 <div className="avatar">
@@ -504,7 +504,7 @@ const ManageItems = () => {
                                             key={item._id}
                                         >
                                             <td>
-                                                {index + 1}
+                                                {index + 61}
                                             </td>
                                             <td>
                                                 <div className="avatar">
