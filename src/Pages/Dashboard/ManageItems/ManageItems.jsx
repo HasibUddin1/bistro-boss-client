@@ -7,9 +7,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const ManageItems = () => {
+
+    const [axiosSecure] = useAxiosSecure()
+
+
     const pagination = {
         clickable: true,
         renderBullet: function (index, className) {
@@ -17,7 +23,34 @@ const ManageItems = () => {
         },
     };
 
-    const [menu] = useMenu()
+    const [menu, , refetch] = useMenu()
+
+    const handleDelete = item => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/menu/${item._id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.deletedCount > 0) {
+                            refetch()
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
 
     return (
         <div className="w-full h-full bg-slate-200">
@@ -30,8 +63,8 @@ const ManageItems = () => {
                     pagination={pagination}
                     modules={[Pagination]}
                     className="mySwiper"
-                    onSlideChange={(swiper) => {
-                        console.log(swiper.realIndex)
+                    onSlideChange={() => {
+                        // console.log(swiper.realIndex)
                     }}
                 >
                     <SwiperSlide>
@@ -71,7 +104,7 @@ const ManageItems = () => {
                                                 <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
                                             </th>
                                             <th>
-                                                <button className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
                                     }
@@ -116,7 +149,7 @@ const ManageItems = () => {
                                                 <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
                                             </th>
                                             <th>
-                                                <button className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
                                     }
@@ -161,7 +194,7 @@ const ManageItems = () => {
                                                 <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
                                             </th>
                                             <th>
-                                                <button className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
                                     }
@@ -206,7 +239,7 @@ const ManageItems = () => {
                                                 <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
                                             </th>
                                             <th>
-                                                <button className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
                                     }
@@ -251,7 +284,7 @@ const ManageItems = () => {
                                                 <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
                                             </th>
                                             <th>
-                                                <button className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
                                     }
@@ -296,7 +329,7 @@ const ManageItems = () => {
                                                 <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
                                             </th>
                                             <th>
-                                                <button className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
                                     }
@@ -341,7 +374,7 @@ const ManageItems = () => {
                                                 <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
                                             </th>
                                             <th>
-                                                <button className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
                                     }
@@ -386,7 +419,7 @@ const ManageItems = () => {
                                                 <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
                                             </th>
                                             <th>
-                                                <button className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
                                     }
@@ -431,7 +464,7 @@ const ManageItems = () => {
                                                 <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
                                             </th>
                                             <th>
-                                                <button className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
                                     }
@@ -476,7 +509,7 @@ const ManageItems = () => {
                                                 <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
                                             </th>
                                             <th>
-                                                <button className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
                                     }
@@ -521,7 +554,7 @@ const ManageItems = () => {
                                                 <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
                                             </th>
                                             <th>
-                                                <button className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
                                     }
