@@ -4,9 +4,27 @@ import SectionTitle from "../../../components/SectionTitle";
 
 
 const AddItems = () => {
+
+    const imageHostingToken = import.meta.env.VITE_Image_Token_Key
+    // console.log(imageHostingToken)
+
+    const imageHostingURL = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostingToken}`
+
     const { register, handleSubmit} = useForm();
     const onSubmit = data => {
-        console.log(data)
+        // console.log(data)
+
+        const formData = new FormData()
+        formData.append('image', data.image[0])
+
+        fetch(imageHostingURL, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(imageResponse => {
+            console.log(imageResponse)
+        })
     };
 
     return (
