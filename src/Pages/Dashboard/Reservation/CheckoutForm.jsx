@@ -8,8 +8,8 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 
 
 
-const CheckoutForm = ({ price }) => {
-    console.log(price)
+const CheckoutForm = ({ cart, price }) => {
+    // console.log(price)
 
     const [cardError, setCardError] = useState('')
 
@@ -34,7 +34,7 @@ const CheckoutForm = ({ price }) => {
                     setClientSecret(res.data.clientSecret)
                 })
         }
-    }, [])
+    }, [price, axiosSecure])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -49,7 +49,7 @@ const CheckoutForm = ({ price }) => {
             return
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card
         })
@@ -59,7 +59,7 @@ const CheckoutForm = ({ price }) => {
         }
         else {
             setCardError('')
-            console.log(paymentMethod)
+            // console.log(paymentMethod)
         }
 
         setProcessing(true)
@@ -81,11 +81,27 @@ const CheckoutForm = ({ price }) => {
             console.log(confirmError)
         }
 
-        console.log('paymentIntent',paymentIntent)
+        console.log('paymentIntent', paymentIntent)
 
         setProcessing(false)
-        if(paymentIntent.status === 'succeeded'){
+        if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id)
+            const paymentInfo = {
+                name: user?.displayName,
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                quantity: cart.length,
+                price,
+                items: cart.map(item => item._id),
+                itemsName: cart.map(item => item.name)
+            }
+            axiosSecure.post('/payments', paymentInfo)
+            .then(res => {
+                console.log(res.data)
+                if(res.data.insertedId){
+                    // display sweet alert
+                }
+            })
         }
 
     }

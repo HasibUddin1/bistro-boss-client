@@ -20,7 +20,7 @@ const Reservation = () => {
             </Helmet>
             <div className="w-1/4 mx-auto">
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm price={price}></CheckoutForm>
+                    <CheckoutForm cart={cart} price={price}></CheckoutForm>
                 </Elements>
             </div>
         </div>
