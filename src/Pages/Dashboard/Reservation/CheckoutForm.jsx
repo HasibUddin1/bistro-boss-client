@@ -1,14 +1,31 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ price }) => {
+    // console.log(price)
 
     const [cardError, setCardError] = useState('')
 
+    const [axiosSecure] = useAxiosSecure()
+
+    const { user } = useContext(AuthContext)
+
     const stripe = useStripe()
     const elements = useElements()
+
+    const [clientSecret, setClientSecret] = useState('')
+
+    useEffect(() => {
+        axiosSecure.post('/create-payment-intent', { price })
+            .then(res => {
+                console.log(res.data.clientSecret)
+                setClientSecret(res.data.clientSecret)
+            })
+    }, [price, axiosSecure])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -35,6 +52,24 @@ const CheckoutForm = () => {
             setCardError('')
             console.log(paymentMethod)
         }
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        email: user?.email || 'Unknown Email',
+                        name: user?.displayName || 'Unknown Name'
+                    },
+                },
+            },
+        );
+
+        if(confirmError){
+            console.log(confirmError)
+        }
+
+        console.log(paymentIntent)
 
     }
 
@@ -59,7 +94,7 @@ const CheckoutForm = () => {
                     }}
                 />
                 <div className="w-9/12 mx-auto mt-5">
-                    <button className="btn btn-primary w-full" type="submit" disabled={!stripe}>
+                    <button className="btn btn-primary w-full" type="submit" disabled={!stripe || !clientSecret}>
                         Pay
                     </button>
                 </div>
