@@ -4,6 +4,7 @@ import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import './CheckoutForm.css'
 
 
 
@@ -91,8 +92,11 @@ const CheckoutForm = ({ cart, price }) => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 quantity: cart.length,
+                date: new Date(),
                 price,
-                items: cart.map(item => item._id),
+                status: 'service pending',
+                cartItems: cart.map(item => item._id),
+                menuItems: cart.map(item => item.itemId),
                 itemsName: cart.map(item => item.name)
             }
             axiosSecure.post('/payments', paymentInfo)
