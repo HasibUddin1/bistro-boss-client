@@ -1,12 +1,15 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 
 
+
 const CheckoutForm = ({ price }) => {
-    // console.log(price)
+    console.log(price)
 
     const [cardError, setCardError] = useState('')
 
@@ -18,14 +21,18 @@ const CheckoutForm = ({ price }) => {
     const elements = useElements()
 
     const [clientSecret, setClientSecret] = useState('')
+    console.log(clientSecret)
 
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', { price })
-            .then(res => {
-                console.log(res.data.clientSecret)
-                setClientSecret(res.data.clientSecret)
-            })
-    }, [price, axiosSecure])
+        // console.log(price)
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    // console.log(res.data.clientSecret)
+                    setClientSecret(res.data.clientSecret)
+                })
+        }
+    }, [])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -58,14 +65,14 @@ const CheckoutForm = ({ price }) => {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        email: user?.email || 'Unknown Email',
-                        name: user?.displayName || 'Unknown Name'
+                        email: user?.email || 'unknown',
+                        name: user?.displayName || 'unknown'
                     },
                 },
             },
         );
 
-        if(confirmError){
+        if (confirmError) {
             console.log(confirmError)
         }
 
