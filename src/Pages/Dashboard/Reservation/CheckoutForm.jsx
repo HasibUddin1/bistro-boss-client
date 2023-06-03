@@ -99,12 +99,12 @@ const CheckoutForm = ({ cart, price }) => {
                 itemsName: cart.map(item => item.name)
             }
             axiosSecure.post('/payments', paymentInfo)
-            .then(res => {
-                console.log(res.data)
-                if(res.data.insertedId){
-                    // display sweet alert
-                }
-            })
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data.insertedId) {
+                        // display sweet alert
+                    }
+                })
         }
 
     }
