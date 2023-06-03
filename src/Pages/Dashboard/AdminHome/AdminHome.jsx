@@ -5,7 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaCreditCard, FaTruck, FaUsers } from "react-icons/fa";
 // import { LuChefHat } from "react-icons/lu";
 import { GiCook } from "react-icons/gi";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, ResponsiveContainer, Legend } from 'recharts';
 import { Helmet } from "react-helmet-async";
 
 
@@ -142,6 +142,7 @@ const AdminHome = () => {
                 <div className="w-1/2">
                     <ResponsiveContainer width="100%" height="100%">
                         <PieChart width={400} height={400}>
+                            <Legend></Legend>
                             <Pie
                                 data={chartData}
                                 cx="50%"
@@ -153,7 +154,7 @@ const AdminHome = () => {
                                 dataKey="totalQuantity"
                             >
                                 {chartData.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                    <Cell name={entry.category} key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                 ))}
                             </Pie>
                         </PieChart>
