@@ -85,6 +85,7 @@ export const router = createBrowserRouter([
                 path: 'myBooking',
                 element: <MyBooking></MyBooking>
             },
+            // admin routes
             {
                 path: 'adminHome',
                 element: <AdminHome></AdminHome>
