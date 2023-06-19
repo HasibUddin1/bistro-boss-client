@@ -562,6 +562,51 @@ const ManageItems = () => {
                             </table>
                         </div>
                     </SwiperSlide>}
+                    {menu.length > 66 && <SwiperSlide>
+                        <div className="overflow-x-auto w-full">
+                            <table className="table w-full">
+                                {/* head */}
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Item Image</th>
+                                        <th>Item Name</th>
+                                        <th>Price</th>
+                                        <th>Action</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        menu.slice(66, 72).map((item, index) => <tr
+                                            key={item._id}
+                                        >
+                                            <td>
+                                                {index + 67}
+                                            </td>
+                                            <td>
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-12 h-12">
+                                                        <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {item.name}
+                                            </td>
+                                            <td>${item.price}</td>
+                                            <th>
+                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
+                                            </th>
+                                            <th>
+                                                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
+                                            </th>
+                                        </tr>)
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </SwiperSlide>}
                 </Swiper>
             </div>
         </div>

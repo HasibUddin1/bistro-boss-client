@@ -4,6 +4,7 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
 import useAdmin from '../../../hooks/useAdmin'
+import Swal from "sweetalert2";
 
 
 const NavigationBar = () => {
@@ -17,7 +18,11 @@ const NavigationBar = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-
+                Swal.fire(
+                    '',
+                    'You successfully logged out',
+                    'success'
+                )
             })
             .catch(error => {
                 console.log(error)
@@ -28,7 +33,7 @@ const NavigationBar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/ourMenu'>Our Menu</Link></li>
         <li><Link to='/ourShop/salad'>Our Shop</Link></li>
-        <li><Link to={ isAdmin ? '/dashboard/adminHome' : '/dashboard/userHome'}>Dashboard</Link></li>
+        <li><Link to={isAdmin ? '/dashboard/adminHome' : '/dashboard/myCart'}>Dashboard</Link></li>
         <li><Link to='/dashboard/myCart'>
             <div className="indicator">
                 <span className="indicator-item badge badge-secondary">+{cart?.length}</span>
@@ -43,7 +48,7 @@ const NavigationBar = () => {
 
     return (
         <div>
-            <div className="navbar fixed z-10 bg-opacity-30 bg-black text-white">
+            <div className="navbar flex justify-between fixed z-10 bg-opacity-30 bg-black text-white px-20">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -59,9 +64,6 @@ const NavigationBar = () => {
                     <ul className="menu menu-horizontal px-1 flex items-center">
                         {navOptions}
                     </ul>
-                </div>
-                <div className="navbar-end">
-                    <a className="btn">Get started</a>
                 </div>
             </div>
         </div>

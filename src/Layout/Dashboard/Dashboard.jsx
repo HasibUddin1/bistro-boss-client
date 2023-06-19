@@ -1,7 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaShoppingCart, FaWallet, FaHome, FaCalendar, FaUtensils, FaBook, FaUsers } from 'react-icons/fa';
-import { TbStarsFilled } from "react-icons/tb";
-import { BsFillCalendarCheckFill } from "react-icons/bs";
 import { TfiMenuAlt } from "react-icons/tfi";
 import useCart from "../../hooks/useCart";
 import useAdmin from "../../hooks/useAdmin";
@@ -13,7 +11,7 @@ const Dashboard = () => {
 
     // const isAdmin = true;
     const [isAdmin] = useAdmin()
-    console.log(isAdmin)
+    // console.log(isAdmin)
 
     return (
         <div className="drawer drawer-mobile">
@@ -38,19 +36,14 @@ const Dashboard = () => {
                                 <li><NavLink to='/dashboard/allUsers'><FaUsers></FaUsers> All Users</NavLink></li>
                             </> :
                             <>
-                                <li><NavLink to='/dashboard/userHome'><FaHome></FaHome> User Home</NavLink></li>
                                 <li><NavLink to='/dashboard/reservation'><FaCalendar></FaCalendar> Reservation</NavLink></li>
                                 <li><NavLink to='/dashboard/paymentHistory'><FaWallet></FaWallet> Payment History</NavLink></li>
                                 <li><NavLink to='/dashboard/myCart'><FaShoppingCart></FaShoppingCart> My Cart <span className="indicator-item badge badge-secondary">+{cart?.length}</span></NavLink></li>
-                                <li><NavLink to='/dashboard/addReview'><TbStarsFilled></TbStarsFilled> Add Review</NavLink></li>
-                                <li><NavLink to='/dashboard/myBooking'><BsFillCalendarCheckFill></BsFillCalendarCheckFill> My Booking</NavLink></li>
                             </>
                     }
                     <hr />
-                    <li><NavLink to='/'>Home</NavLink></li>
-                    <li><NavLink to='/ourMenu'>Menu</NavLink></li>
-                    <li><NavLink to='/shop'>Shop</NavLink></li>
-                    <li><NavLink to='/contact'>Contact</NavLink></li>
+                    <li><NavLink to='/'><FaHome></FaHome> Home</NavLink></li>
+                    <li><NavLink to='/ourMenu'><TfiMenuAlt></TfiMenuAlt> Menu</NavLink></li>
                 </ul>
 
             </div>

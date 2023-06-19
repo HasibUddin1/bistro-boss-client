@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const SocialLogin = () => {
@@ -19,6 +20,15 @@ const SocialLogin = () => {
                 const loggedInUser = result.user
                 console.log(loggedInUser)
                 const createdUser = { name: loggedInUser.displayName, email: loggedInUser.email }
+                Swal.fire({
+                    title: 'User has been successfully logged in',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
 
                 fetch('https://bistro-boss-server-dusky.vercel.app/users', {
                     method: 'POST',
