@@ -30,19 +30,19 @@ const NavigationBar = () => {
     }
 
     const navOptions = <>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/ourMenu'>Our Menu</Link></li>
-        <li><Link to='/ourShop/salad'>Our Shop</Link></li>
-        <li><Link to={isAdmin ? '/dashboard/adminHome' : '/dashboard/myCart'}>Dashboard</Link></li>
-        <li><Link to='/dashboard/myCart'>
+        <li><Link className="text-black lg:text-white" to='/'>Home</Link></li>
+        <li><Link className="text-black lg:text-white" to='/ourMenu'>Our Menu</Link></li>
+        <li><Link className="text-black lg:text-white" to='/ourShop/salad'>Our Shop</Link></li>
+        <li><Link className="text-black lg:text-white" to={isAdmin ? '/dashboard/adminHome' : '/dashboard/myCart'}>Dashboard</Link></li>
+        <li><Link className="text-black lg:text-white" to='/dashboard/myCart'>
             <div className="indicator">
                 <span className="indicator-item badge badge-secondary">+{cart?.length}</span>
                 <button className="btn bg-transparent border-none text-xl"><FaShoppingCart></FaShoppingCart></button>
             </div>
         </Link></li>
         {user ?
-            <><button onClick={handleLogOut} className="btn btn-ghost">LogOut</button></> :
-            <li><Link to='/login'>Login</Link></li>
+            <><button onClick={handleLogOut} className="btn btn-ghost text-black lg:text-white">LogOut</button></> :
+            <li><Link className="text-black lg:text-white" to='/login'>Login</Link></li>
         }
     </>
 
