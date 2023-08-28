@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import useMenu from "../../../hooks/useMenu";
 import SectionTitle from "../../../components/SectionTitle";
-import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 // pagination css
 import "swiper/css";
@@ -78,7 +78,6 @@ const ManageItems = () => {
                                         <th>Item Name</th>
                                         <th>Price</th>
                                         <th>Action</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -101,9 +100,6 @@ const ManageItems = () => {
                                             </td>
                                             <td>${item.price}</td>
                                             <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
-                                            <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
@@ -122,7 +118,6 @@ const ManageItems = () => {
                                         <th>Item Image</th>
                                         <th>Item Name</th>
                                         <th>Price</th>
-                                        <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -146,9 +141,6 @@ const ManageItems = () => {
                                             </td>
                                             <td>${item.price}</td>
                                             <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
-                                            <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
@@ -167,7 +159,6 @@ const ManageItems = () => {
                                         <th>Item Image</th>
                                         <th>Item Name</th>
                                         <th>Price</th>
-                                        <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -191,9 +182,6 @@ const ManageItems = () => {
                                             </td>
                                             <td>${item.price}</td>
                                             <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
-                                            <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
@@ -212,7 +200,6 @@ const ManageItems = () => {
                                         <th>Item Image</th>
                                         <th>Item Name</th>
                                         <th>Price</th>
-                                        <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -236,9 +223,6 @@ const ManageItems = () => {
                                             </td>
                                             <td>${item.price}</td>
                                             <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
-                                            <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
@@ -257,7 +241,6 @@ const ManageItems = () => {
                                         <th>Item Image</th>
                                         <th>Item Name</th>
                                         <th>Price</th>
-                                        <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -281,9 +264,6 @@ const ManageItems = () => {
                                             </td>
                                             <td>${item.price}</td>
                                             <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
-                                            <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
@@ -302,7 +282,6 @@ const ManageItems = () => {
                                         <th>Item Image</th>
                                         <th>Item Name</th>
                                         <th>Price</th>
-                                        <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -326,9 +305,6 @@ const ManageItems = () => {
                                             </td>
                                             <td>${item.price}</td>
                                             <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
-                                            <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
@@ -347,7 +323,6 @@ const ManageItems = () => {
                                         <th>Item Image</th>
                                         <th>Item Name</th>
                                         <th>Price</th>
-                                        <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -371,9 +346,6 @@ const ManageItems = () => {
                                             </td>
                                             <td>${item.price}</td>
                                             <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
-                                            <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
@@ -392,7 +364,6 @@ const ManageItems = () => {
                                         <th>Item Image</th>
                                         <th>Item Name</th>
                                         <th>Price</th>
-                                        <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -416,9 +387,6 @@ const ManageItems = () => {
                                             </td>
                                             <td>${item.price}</td>
                                             <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
-                                            <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
@@ -437,7 +405,6 @@ const ManageItems = () => {
                                         <th>Item Image</th>
                                         <th>Item Name</th>
                                         <th>Price</th>
-                                        <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -461,9 +428,6 @@ const ManageItems = () => {
                                             </td>
                                             <td>${item.price}</td>
                                             <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
-                                            <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
@@ -482,7 +446,6 @@ const ManageItems = () => {
                                         <th>Item Image</th>
                                         <th>Item Name</th>
                                         <th>Price</th>
-                                        <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -506,9 +469,6 @@ const ManageItems = () => {
                                             </td>
                                             <td>${item.price}</td>
                                             <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
-                                            <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
@@ -527,7 +487,6 @@ const ManageItems = () => {
                                         <th>Item Image</th>
                                         <th>Item Name</th>
                                         <th>Price</th>
-                                        <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -551,9 +510,6 @@ const ManageItems = () => {
                                             </td>
                                             <td>${item.price}</td>
                                             <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
-                                            <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
                                         </tr>)
@@ -572,7 +528,6 @@ const ManageItems = () => {
                                         <th>Item Image</th>
                                         <th>Item Name</th>
                                         <th>Price</th>
-                                        <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -595,9 +550,6 @@ const ManageItems = () => {
                                                 {item.name}
                                             </td>
                                             <td>${item.price}</td>
-                                            <th>
-                                                <button className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaRegEdit></FaRegEdit> </button>
-                                            </th>
                                             <th>
                                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button>
                                             </th>
