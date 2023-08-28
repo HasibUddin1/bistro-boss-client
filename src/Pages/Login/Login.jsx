@@ -73,12 +73,12 @@ const Login = () => {
 
     return (
         <div className='login-page-background h-screen'>
-            <div className="hero py-20 px-20">
-                <div className="drop-shadow-2xl bg-base-100 flex rounded-xl rounded-s-xl login-page-background w-9/12 mx-auto">
-                    <div className='text-center w-1/2 h-1/2 my-auto'>
+            <div className="hero py-20 lg:px-20">
+                <div className="drop-shadow-2xl bg-base-100 lg:flex rounded-xl rounded-s-xl login-page-background lg:w-9/12 mx-auto">
+                    <div className='text-center lg:w-1/2 lg:h-1/2 my-auto'>
                         <img className='rounded-xl' src={loginImage} alt="" />
                     </div>
-                    <div className='w-1/2 py-5'>
+                    <div className='lg:w-1/2 py-5'>
                         <h2 className='text-center text-3xl font-bold'>Login</h2>
                         <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">

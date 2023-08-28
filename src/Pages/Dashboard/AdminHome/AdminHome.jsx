@@ -70,8 +70,8 @@ const AdminHome = () => {
                 <title>Bistro Boss | Admin Home</title>
             </Helmet>
             <h1 className="text-4xl text-center mb-5">Hi, Welcome <span className="font-bold">{user?.displayName}</span></h1>
-            <div className="stats shadow">
-                <div className="stat items-center bg-gradient-to-r from-purple-500 to bg-purple-100 text-white">
+            <div className="lg:flex shadow">
+                <div className="lg:w-1/4 p-4 items-center bg-gradient-to-r from-purple-500 to bg-purple-100 text-white">
                     <div className="flex items-center gap-5">
                         <div className="stat-figure text-secondary">
                             <FaCreditCard className="text-5xl text-white"></FaCreditCard>
@@ -82,7 +82,7 @@ const AdminHome = () => {
                         </div>
                     </div>
                 </div>
-                <div className="stat items-center bg-gradient-to-r from-amber-500 to bg-amber-100 text-white">
+                <div className="lg:w-1/4 p-4 items-center bg-gradient-to-r from-amber-500 to bg-amber-100 text-white">
                     <div className="flex items-center gap-5">
                         <div className="stat-figure text-secondary">
                             <FaUsers className="text-5xl text-white"></FaUsers>
@@ -93,7 +93,7 @@ const AdminHome = () => {
                         </div>
                     </div>
                 </div>
-                <div className="stat items-center bg-gradient-to-r from-pink-500 to bg-pink-100 text-white">
+                <div className="lg:w-1/4 p-4 items-center bg-gradient-to-r from-pink-500 to bg-pink-100 text-white">
                     <div className="flex items-center gap-5">
                         <div className="stat-figure text-secondary">
                             <GiCook className="text-5xl text-white"></GiCook>
@@ -104,7 +104,7 @@ const AdminHome = () => {
                         </div>
                     </div>
                 </div>
-                <div className="stat items-center bg-gradient-to-r from-sky-500 to bg-sky-100 text-white">
+                <div className="lg:w-1/4 p-4 items-center bg-gradient-to-r from-sky-500 to bg-sky-100 text-white">
                     <div className="flex items-center gap-5">
                         <div className="stat-figure text-secondary">
                             <FaTruck className="text-5xl text-white"></FaTruck>
@@ -116,8 +116,8 @@ const AdminHome = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex">
-                <div className="w-1/2">
+            <div className="lg:flex">
+                <div className="lg:w-1/2">
                     <BarChart
                         width={500}
                         height={300}
@@ -139,7 +139,7 @@ const AdminHome = () => {
                         </Bar>
                     </BarChart>
                 </div>
-                <div className="w-1/2">
+                <div className="lg:w-1/2">
                     <ResponsiveContainer width="100%" height="100%">
                         <PieChart width={400} height={400}>
                             <Legend></Legend>

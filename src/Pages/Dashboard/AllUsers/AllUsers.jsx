@@ -38,7 +38,7 @@ const AllUsers = () => {
     }
 
     return (
-        <div className="w-full h-full flex items-center bg-slate-200 p-52">
+        <div className="w-full h-full flex items-center bg-slate-200 lg:p-52">
             <Helmet>
                 <title>Bistro Boss | My Cart</title>
             </Helmet>
