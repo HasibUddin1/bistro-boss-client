@@ -13,8 +13,20 @@ const AllUsers = () => {
         return res.data;
     })
 
-    const handleDelete = user => {
-        console.log(user)
+    const handleDelete = id => {
+        axiosSecure.delete(`/deleteUser/${id}`)
+            .then(res => {
+                if (res.data.deletedCount > 0) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'You have successfully deleted the user',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    refetch()
+                }
+            })
     }
 
     const handleMakeAdmin = user => {
@@ -69,7 +81,7 @@ const AllUsers = () => {
                                             'admin' :
                                             <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-[#D1A054] text-white font-bold hover:text-black"><FaUserShield></FaUserShield> </button>
                                     }</td>
-                                    <td><button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button></td>
+                                    <td><button onClick={() => handleDelete(user._id)} className="btn btn-ghost bg-red-600 text-white font-bold hover:text-black"><FaTrashAlt></FaTrashAlt> </button></td>
                                 </tr>)
                             }
 
