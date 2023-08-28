@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import signUpImage from '../../assets/others/authentication2.png'
 import { useForm } from 'react-hook-form';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -10,6 +10,7 @@ const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserInformation } = useContext(AuthContext)
     const navigate = useNavigate()
+    const [error, setError] = useState('')
 
 
     const onSubmit = data => {
@@ -55,6 +56,9 @@ const SignUp = () => {
             })
             .catch(error => {
                 console.log(error)
+                if(error.message){
+                    setError('Unable to create your profile')
+                }
             })
     };
 
@@ -95,8 +99,7 @@ const SignUp = () => {
                                 </label>
                                 <input type="password" {...register("password", {
                                     required: true,
-                                    minLength: 8,
-                                    pattern: /(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]/
+                                    minLength: 6
                                 })} name="password" placeholder="password" className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p role="alert" className='text-red-600 font-semibold'>Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p role="alert" className='text-red-600 font-semibold'>Password must be 8 characters long</p>}
@@ -113,6 +116,7 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>
+            {error && <p className='text-red-600 text-center font-bold'>{error}</p>}
         </div>
     );
 };

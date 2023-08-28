@@ -15,6 +15,7 @@ const Login = () => {
     const captchaRef = useRef(null)
 
     const [disabled, setDisabled] = useState(true)
+    const [error, setError] = useState('')
 
     const {signIn} = useContext(AuthContext)
 
@@ -36,6 +37,7 @@ const Login = () => {
         const password = form.password.value
         console.log(email, password)
 
+        setError('')
         signIn(email, password)
         .then(result => {
             const loggedUser = result.user
@@ -58,6 +60,9 @@ const Login = () => {
         })
         .catch(error => {
             console.log(error)
+            if(error.message){
+                setError('Your credentials do not match')
+            }
         })
     }
 
@@ -114,6 +119,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            {error && <p className='text-red-600 text-center font-bold'>{error}</p>}
         </div>
     );
 };
